@@ -1,11 +1,12 @@
 {
   "name": "sashjs",
   "version": "0.1.0",
-  "homepage": "https://react.spurko.com/sash-js/preview/",
+  "homepage": "https://react.spurko.com/",
   "private": true,
   "dependencies": {
     "@emotion/styled": "^11.10.5",
     "@fullcalendar/common": "^5.11.3",
+    "@fullcalendar/core": "^6.1.4",
     "@fullcalendar/daygrid": "^6.0.1",
     "@fullcalendar/interaction": "^6.0.1",
     "@fullcalendar/list": "^6.0.1",

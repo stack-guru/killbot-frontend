@@ -1,6 +1,6 @@
 import React, { Fragment, lazy } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import Loader from './Layouts/Loader/Loader';
 import "./index.scss";
 import reportWebVitals from './reportWebVitals';
@@ -143,12 +143,17 @@ const ErrorPages = lazy(() => import('./components/ErrorPages'));
 const Switcherapp = lazy(() => import("./components/Switcherapp"))
 const Landing = lazy(() => import("./components/Landing"))
 
-const AuthLogin = lazy(() => import('./components/Authentication/firebaseAuth/AuthLogin'));
-const SignUp = lazy(() => import('./components/Authentication/firebaseAuth/Signup'));
-
-
 const container = document.getElementById('root');
 const root = createRoot(container);
+
+const ProtectedRoute = ({ children }) => {
+  const isAuthenticated = localStorage.getItem("isAuthenticated")
+  if (!isAuthenticated) {
+    return <Navigate to="/authentication/login" replace />;
+  }
+
+  return children;
+};
 
 root.render(
   <React.StrictMode>
@@ -159,12 +164,16 @@ root.render(
 
             {/* Firebase Authentication */}
 
-            <Route path={`${process.env.PUBLIC_URL}/`} element={<Auth />}>
+            {/* <Route path={`${process.env.PUBLIC_URL}/`} element={<Auth />}>
               <Route index element={<AuthLogin />} />
               <Route path={`${process.env.PUBLIC_URL}/Authentication/firebaseAuth/login`} element={<AuthLogin />} />
               <Route path={`${process.env.PUBLIC_URL}/Authentication/firebaseAuth/SignUp`} element={<SignUp />} />
+            </Route> */}
+            <Route >
+              <Route path={`${process.env.PUBLIC_URL}/`} element={<Landing />} />
             </Route>
-            <Route path={`${process.env.PUBLIC_URL}/`} element={<App />}>
+
+            <Route path={`${process.env.PUBLIC_URL}/`} element={<ProtectedRoute><App /></ProtectedRoute>}>
               <Route path={`${process.env.PUBLIC_URL}/dashboard`} element={<Dashboard />} />
 
               {/* Apps */}
@@ -219,9 +228,6 @@ root.render(
                 <Route path={`${process.env.PUBLIC_URL}/bootstrap/typography`} element={<Typography />} />,
                 <Route path={`${process.env.PUBLIC_URL}/bootstrap/ribbons`} element={<Ribbons />} />,
               </Route>
-
-
-
 
               {/* Charts */}
               <Route>

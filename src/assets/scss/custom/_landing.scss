@@ -1,10 +1,10 @@
 //Landing page ui
 
 .landing-top-header {
-    background-image: url(../images/landing/backgrounds/5.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    // background-image: url(../images/landing/backgrounds/5.png);
+    // background-repeat: no-repeat;
+    // background-position: center;
+    // background-size: cover;
     inset-block-start: 0;
     inset-inline-start: 0;
     inset-inline-end: 0;
@@ -15,15 +15,15 @@
         position: absolute;
         content: "";
         inset-inline-start: -19%;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
+        // background-repeat: no-repeat;
+        // background-position: center;
+        // background-size: cover;
         inset-inline-end: 0;
         width: 35%;
         height: 80%;
         // z-index: -1;
         overflow: hidden;
-        background-image: url(../images/landing/backgrounds/1.png);
+        // background-image: url(../images/landing/backgrounds/1.png);
     }
 }
 

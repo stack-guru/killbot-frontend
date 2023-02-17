@@ -1,17 +1,22 @@
 import React from 'react';
 import styles from './Login.module.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Col, Tabs, Form, Tab } from 'react-bootstrap';
 import { Password } from '../../../Data/Authenticatepage/DataAuthentication';
 
 
 const Login = () => {
+  const navigate = useNavigate()
+  // const Log =()=>{
+  //   let Rightside = document.querySelector(".mobile-num")
+  //   Rightside.style.display = "none";
+  //   let Rightsides = document.querySelector(".login-otp")
+  //   Rightsides.style.display = "flex";
+  // }
 
-  const Log =()=>{
-    let Rightside = document.querySelector(".mobile-num")
-    Rightside.style.display = "none";
-    let Rightsides = document.querySelector(".login-otp")
-    Rightsides.style.display = "flex";
+  const onLogin = () => {
+    localStorage.setItem("isAuthenticated", "Yes")
+    navigate(`${process.env.PUBLIC_URL}/dashboard`)
   }
 
   return (
@@ -32,11 +37,11 @@ const Login = () => {
                 
               
               <div className="panel panel-primary">
-                <div className="tab-menu-heading border-0">
-                  <div className="tabs-menu1">
+                {/* <div className="tab-menu-heading border-0"> */}
+                  {/* <div className="tabs-menu1"> */}
                     {/* <!-- Tabs --> */}
-                    <Tabs defaultActiveKey="Email" id="uncontrolled-tab-example" className="tab-content">
-                      <Tab eventKey="Email" title="Email" className='p-0 pt-5'>
+                    {/* <Tabs defaultActiveKey="Email" id="uncontrolled-tab-example" className="tab-content"> */}
+                      {/* <Tab eventKey="Email" title="Email" className='p-0 pt-5'> */}
                         
                           <div className="wrap-input100 validate-input input-group" data-bs-validate="Valid email is required: ex@abc.xyz">
                             <Link to="#" className="input-group-text bg-white text-muted">
@@ -49,9 +54,9 @@ const Login = () => {
                             <p className="mb-0 fs-13"><Link to={`${process.env.PUBLIC_URL}/authentication/forgotpassword`} className="text-primary ms-1">Forgot Password?</Link></p>
                           </div>
                           <div className="container-login100-form-btn">
-                            <Link to={`${process.env.PUBLIC_URL}/dashboard`} className="login100-form-btn btn-primary">
+                            <a href="" className="login100-form-btn btn-primary" onClick={onLogin}>
                               Login
-                            </Link>
+                            </a>
                           </div>
                           <div className="text-center pt-3">
                             <p className="text-dark mb-0 fs-13 mx-3">Not a member?<Link to={`${process.env.PUBLIC_URL}/authentication/register`} className="text-primary ms-1">Sign UP</Link></p>
@@ -75,8 +80,8 @@ const Login = () => {
                             </Link>
                           </div>
                         
-                      </Tab>
-                      <Tab eventKey="Mobile" title="Mobile">
+                      {/* </Tab> */}
+                      {/* <Tab eventKey="Mobile" title="Mobile">
                         <div className="tab-pane pt-5" id="tab6">
                           <div id="mobile-num" className="wrap-input100 mobile-num validate-input input-group mb-4">
                             <Link to="#" className="input-group-text bg-white text-muted">
@@ -97,10 +102,10 @@ const Login = () => {
                             </Link>
                           </div>
                         </div>
-                      </Tab>
-                    </Tabs>
-                  </div>
-                </div>
+                      </Tab> */}
+                    {/* </Tabs> */}
+                  {/* </div> */}
+                {/* </div> */}
 
               </div>
 

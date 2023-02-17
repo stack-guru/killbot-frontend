@@ -1,5 +1,6 @@
 :root {
-    --primary-rgb: 108 ,95, 252;
+    //#BC243C
+    --primary-rgb: 188, 36, 60;
     --primary-bg-color: rgb(var(--primary-rgb));
     --primary-bg-hover: rgb(var(--primary-rgb),0.9);
     --primary-bg-border: rgb(var(--primary-rgb));
@@ -101,6 +102,7 @@ $gray: #5a6970;
 $green: #4ecc48;
 $blue: #3223f1;
 $yellow: #FBB034;
+$custom-black: #192d35;
 
 /*Gradient variables*/
 
