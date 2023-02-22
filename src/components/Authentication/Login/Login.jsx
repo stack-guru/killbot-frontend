@@ -3,9 +3,11 @@ import styles from './Login.module.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { Col, Tabs, Form, Tab } from 'react-bootstrap';
 import { Password } from '../../../Data/Authenticatepage/DataAuthentication';
-
+import ReCAPTCHA from "react-google-recaptcha";
 
 const Login = () => {
+  document.querySelector("body").classList.remove("dark-mode");
+  
   const navigate = useNavigate()
   // const Log =()=>{
   //   let Rightside = document.querySelector(".mobile-num")
@@ -53,6 +55,9 @@ const Login = () => {
                           <div className="text-end pt-4">
                             <p className="mb-0 fs-13"><Link to={`${process.env.PUBLIC_URL}/authentication/forgotpassword`} className="text-primary ms-1">Forgot Password?</Link></p>
                           </div>
+                          
+                          {/* <ReCAPTCHA /> */}
+
                           <div className="container-login100-form-btn">
                             <a href="" className="login100-form-btn btn-primary" onClick={onLogin}>
                               Login

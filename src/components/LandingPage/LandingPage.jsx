@@ -243,131 +243,18 @@ const LandingPage = () => {
               {/* <!-- CONTAINER --> */}
               <div className="main-container">
                 <div className="">
-                  {/* <!-- ROW-1 OPEN --> */}
-                  <div className="section pb-0 custom-bg-dark">
-                    <Container>
-                      <Row>
-                        <h4 className="text-center fw-semibold text-white">Statistics</h4>
-                        <span className="landing-title"></span>
-                        <h2 className="text-center fw-semibold mb-7 text-white">
-                          Sash Template Statistics.
-                        </h2>
-                      </Row>
-                      <Row className="text-center services-statistics landing-statistics">
-                        <Col xl={3} md={6} lg={6}>
-                          <Card>
-                            <Card.Body className="bg-primary-transparent">
-                              <div className="counter-status">
-                                <div className="counter-icon bg-primary-transparent box-shadow-primary">
-                                  <i className="fe fe-layers text-primary fs-23"></i>
-                                </div>
-                                <div className="test-body text-center">
-                                  <h1 className=" mb-0">
-                                    <span className="counter fw-semibold counter ">
-                                      100
-                                    </span>
-                                    +
-                                  </h1>
-                                  <div className="counter-text">
-                                    <h5 className="font-weight-normal mb-0 ">
-                                      HTML Pages
-                                    </h5>
-                                  </div>
-                                </div>
-                              </div>
-                            </Card.Body>
-                          </Card>
-                        </Col>
-                        <Col xl={3} md={6} lg={6}>
-                          <Card>
-                            <Card.Body className="bg-secondary-transparent">
-                              <div className="counter-status">
-                                <div className="counter-icon bg-secondary-transparent box-shadow-secondary">
-                                  <i className="fe fe-wind text-secondary fs-23"></i>
-                                </div>
-                                <div className="text-body text-center">
-                                  <h1 className=" mb-0">
-                                    <span className="counter fw-semibold counter ">
-                                      60
-                                    </span>
-                                    +
-                                  </h1>
-                                  <div className="counter-text">
-                                    <h5 className="font-weight-normal mb-0 ">
-                                      Integrated Plugins
-                                    </h5>
-                                  </div>
-                                </div>
-                              </div>
-                            </Card.Body>
-                          </Card>
-                        </Col>
-                        <Col xl={3} md={6} lg={6}>
-                          <Card>
-                            <Card.Body className="bg-success-transparent">
-                              <div className="counter-status">
-                                <div className="counter-icon bg-success-transparent box-shadow-success">
-                                  <i className="fe fe-file-text text-success fs-23"></i>
-                                </div>
-                                <div className="text-body text-center">
-                                  <h1 className=" mb-0">
-                                    <span className="counter fw-semibold counter ">
-                                      10
-                                    </span>
-                                    +
-                                  </h1>
-                                  <div className="counter-text">
-                                    <h5 className="font-weight-normal mb-0 ">
-                                      Form Elements
-                                    </h5>
-                                  </div>
-                                </div>
-                              </div>
-                            </Card.Body>
-                          </Card>
-                        </Col>
-                        <Col xl={3} md={6} lg={6}>
-                          <Card>
-                            <Card.Body className="bg-danger-transparent">
-                              <div className="counter-status">
-                                <div className="counter-icon bg-danger-transparent box-shadow-danger">
-                                  <i className="fe fe-grid text-danger fs-23"></i>
-                                </div>
-                                <div className="text-body text-center">
-                                  <h1 className=" mb-0">
-                                    <span className="counter fw-semibold counter ">
-                                      30
-                                    </span>
-                                    +
-                                  </h1>
-                                  <div className="counter-text">
-                                    <h5 className="font-weight-normal mb-0 ">
-                                      Customize Widgets
-                                    </h5>
-                                  </div>
-                                </div>
-                              </div>
-                            </Card.Body>
-                          </Card>
-                        </Col>
-                      </Row>
-                    </Container>
-                  </div>
-                  {/* <!-- ROW-1 CLOSED --> */}
 
                   {/* <!-- ROW-2 OPEN --> */}
-                  <div className="sptb section bg-white" id="Features">
+                  <div className="sptb section custom-bg-dark" id="Features">
                     <Container>
                       <Row>
-                        <h4 className="text-center fw-semibold">Features</h4>
+                        <h4 className="text-center fw-semibold text-white">Features</h4>
                         <span className="landing-title"></span>
-                        <h2 className="fw-semibold text-center">
-                          Sash Main Features
+                        <h2 className="fw-semibold text-center text-white">
+                          Killbot Main Features
                         </h2>
-                        <p className="text-default mb-5 text-center">
-                          The Sash admin template comes with ready-to-use
-                          features that are completely easy-to-use for any user,
-                          even for a beginner.
+                        <p className="text-default mb-5 text-center text-white">
+                          Your website, APIs, and applications are your key channels for doing business with your customers and suppliers. As more and more shift online, ensuring these resources are secure, performant and reliable is a business imperative. Killbot is a complete solution to enable this for anything connected to the Internet.
                         </p>
                         <Row className="mt-7">
                           <Col lg={6} md={12}>
@@ -414,13 +301,9 @@ const LandingPage = () => {
                                   />
                                 </svg>
                               </div>
-                              <div className="text-left">
-                                <h4 className="fw-bold">
-                                  Quality &amp; Clean Code
-                                </h4>
-                                <p className="mb-0">
-                                  The Sash admin code is maintained very cleanly
-                                  and well-structured with proper comments.
+                              <div className="d-flex align-items-center">
+                                <p>
+                                  KILLBOT BLOCKER
                                 </p>
                               </div>
                             </Card>
@@ -511,13 +394,8 @@ const LandingPage = () => {
                                   </g>
                                 </svg>
                               </div>
-                              <div className="text-left">
-                                <h4 className="fw-bold">Multiple Demos</h4>
-                                <p className="mb-0">
-                                  We included multiple demos, preview video, and
-                                  screen shots to give a quick overview of our
-                                  Sash admin template.
-                                </p>
+                              <div className="d-flex align-items-center">
+                                <p>KILLBOT SHORTLINK</p>
                               </div>
                             </Card>
                           </Col>
@@ -660,12 +538,9 @@ const LandingPage = () => {
                                   </g>
                                 </svg>
                               </div>
-                              <div className="text-left">
-                                <h4 className="fw-bold">Validation Forms</h4>
-                                <p className="mb-0">
-                                  Different types of “Form Validation” are
-                                  implemented in this Sash admin template and
-                                  used strict validation rules.
+                              <div className="d-flex align-items-center">
+                                <p>
+                                  LOOKUP IP ADDRESS
                                 </p>
                               </div>
                             </Card>
@@ -764,12 +639,9 @@ const LandingPage = () => {
                                   </g>
                                 </svg>
                               </div>
-                              <div className="text-left">
-                                <h4 className="fw-bold">Widgets</h4>
-                                <p className="mb-0">
-                                  30+ widgets are included in this template.
-                                  Please check out the best option that suits
-                                  you and implement it in your projects.
+                              <div className="d-flex align-items-center">
+                                <p>
+                                  DISPOSABLE EMAIL IDENTIFY
                                 </p>
                               </div>
                             </Card>
@@ -913,12 +785,9 @@ const LandingPage = () => {
                                   </g>
                                 </svg>
                               </div>
-                              <div className="text-left">
-                                <h4 className="fw-bold">9 Types of Charts</h4>
-                                <p className="mb-0">
-                                  We included nine (9) types of the best
-                                  possible chart options for your project. You
-                                  can customize with your requirement.
+                              <div className="d-flex align-items-center">
+                                <p>
+                                  PHONE NUMBER IDENTIFY
                                 </p>
                               </div>
                             </Card>
@@ -987,13 +856,9 @@ const LandingPage = () => {
                                   />
                                 </svg>
                               </div>
-                              <div className="text-left">
-                                <h4 className="fw-bold">Documentation</h4>
-                                <p className="mb-0">
-                                  The documentation provides clear-cut material
-                                  for the Sash admin template. The documentation
-                                  is explained or instructed in such a way that
-                                  every user can understand.
+                              <div className="d-flex align-items-center">
+                                <p>
+                                  CUSTOM AI SOLUTION (B2B/B2G)
                                 </p>
                               </div>
                             </Card>
@@ -1003,134 +868,6 @@ const LandingPage = () => {
                     </Container>
                   </div>
                   {/* <!-- ROW-2 CLOSED --> */}
-
-                  {/* <!-- ROW-3 OPEN --> */}
-                  <div
-                    className="section pb-0 custom-bg-dark text-white"
-                    id="About"
-                  >
-                    <Container>
-                      <Row>
-                        <h4 className="text-center fw-semibold">Our Mission</h4>
-                        <span className="landing-title"></span>
-                        <div className="text-center">
-                          <h2 className="text-center fw-semibold">
-                            Our mission is to make work meaningful.
-                          </h2>
-                        </div>
-                        <Col lg={12}>
-                          <Card className="bg-transparent">
-                            <Card.Body className="text-dark">
-                              <div className="statistics-info">
-                                <Row>
-                                  <Col xl={6} lg={6} className="ps-0">
-                                    <div className="text-center mb-3">
-                                      <img
-                                        src={require("../../assets/images/landing/1.png")}
-                                        alt=""
-                                        className="br-5"
-                                      />
-                                    </div>
-                                  </Col>
-                                  <Col xl={6} lg={6} className="pe-0 my-auto">
-                                    <div className="ps-5">
-                                      <h2 className="text-start fw-semibold fs-25 mb-6 text-white">
-                                        We are a creative agency with a passion
-                                        for design.
-                                      </h2>
-                                      <div className="d-flex">
-                                        <span>
-                                          <svg
-                                            width="20"
-                                            height="20"
-                                            viewBox="0 0 24 24"
-                                          >
-                                            <path
-                                              fill="#6c5ffc"
-                                              d="M23,12L20.56,9.22L20.9,5.54L17.29,4.72L15.4,1.54L12,3L8.6,1.54L6.71,4.72L3.1,5.53L3.44,9.21L1,12L3.44,14.78L3.1,18.47L6.71,19.29L8.6,22.47L12,21L15.4,22.46L17.29,19.28L20.9,18.46L20.56,14.78L23,12M10,17L6,13L7.41,11.59L10,14.17L16.59,7.58L18,9L10,17Z"
-                                            />
-                                          </svg>
-                                        </span>
-                                        <div className="ms-5 mb-4 text-white">
-                                          <h5 className="fw-bold">
-                                            Quality & Clean Code
-                                          </h5>
-                                          <p>
-                                            The Sash admin code is maintained
-                                            very cleanly and well-structured
-                                            with proper comments.
-                                          </p>
-                                        </div>
-                                      </div>
-                                      <div className="d-flex">
-                                        <span>
-                                          <svg
-                                            width="20"
-                                            height="20px"
-                                            viewBox="0 0 24 24"
-                                          >
-                                            <path
-                                              fill="#6c5ffc"
-                                              d="M23,12L20.56,9.22L20.9,5.54L17.29,4.72L15.4,1.54L12,3L8.6,1.54L6.71,4.72L3.1,5.53L3.44,9.21L1,12L3.44,14.78L3.1,18.47L6.71,19.29L8.6,22.47L12,21L15.4,22.46L17.29,19.28L20.9,18.46L20.56,14.78L23,12M10,17L6,13L7.41,11.59L10,14.17L16.59,7.58L18,9L10,17Z"
-                                            />
-                                          </svg>
-                                        </span>
-                                        <div className="ms-5 mb-4 text-white">
-                                          <h5 className="fw-bold">
-                                            Well Documented
-                                          </h5>
-                                          <p>
-                                            The documentation provides clear-cut
-                                            material for the Sash admin
-                                            template. The documentation is
-                                            explained or instructed in such a
-                                            way that every user can understand.
-                                          </p>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </Col>
-                                </Row>
-                              </div>
-                            </Card.Body>
-                          </Card>
-                        </Col>
-                      </Row>
-                    </Container>
-                  </div>
-                  {/* <!-- ROW-3 CLOSED --> */}
-
-                  {/* <!-- ROW-4 OPEN --> */}
-                  <div className="section testimonial-owl-landing">
-                    <Container>
-                      <Row>
-                        <Card className="bg-transparent mb-0">
-                          <h4 className="text-center fw-semibold text-white">
-                            Features
-                          </h4>
-                          <span className="landing-title"></span>
-                          <div
-                            className="demo-screen-skin code-quality"
-                            id="dependencies"
-                          >
-                            <div className="text-center p-0">
-                              <h2 className="text-center fw-semibold text-white">
-                                Features Used in Sash Admin Template
-                              </h2>
-                              <Row className="justify-content-center">
-                                <Col lg={12} className="px-0">
-                                  <div className="feature-logos mt-5">
-                                    <Features />
-                                  </div>
-                                </Col>
-                              </Row>
-                            </div>
-                          </div>
-                        </Card>
-                      </Row>
-                    </Container>
-                  </div>
-                  {/* <!-- ROW-4 CLOSED --> */}
 
                   {/* <!-- ROW-5 OPEN --> */}
                   <div className="section">
@@ -2466,109 +2203,12 @@ const LandingPage = () => {
                       <Col lg={4} sm={12} md={12} className="">
                         <h6>About</h6>
                         <p>
-                          Sed ut perspiciatis unde omnis iste natus error sit
-                          voluptatem accusantium doloremque laudantium, totam
-                          rem aperiam, eaque ipsa quae ab illo inventore
-                          veritatis et quasi architecto beatae vitae dicta sunt
-                          explicabo.
-                        </p>
-                        <p className="mb-5 mb-lg-2">
-                          Duis aute irure dolor in reprehenderit in voluptate
-                          velit esse cillum dolore eu fugiat nulla pariatur
-                          Excepteur sint occaecat .
+                          Killbot Service provides comprehensive bot defense for Web applications, HTML5 websites, mobile apps, and APIs. It can effectively reduce the risks caused by specific vulnerabilities. You can use Killbot Service in the following scenarios: flight seating occupancy, online scalping, user enumeration, and core API exploitation. Killbot Service is a reverse proxy technology based PaaS (Platform as a Service) solution that allows you to specify custom protection policies to identify and control malicious traffic. You can also view the protection status in the console.
                         </p>
                       </Col>
                       <Col lg={2} sm={6} md={4} className="">
-                        <h6>Pages</h6>
-                        <ul className="list-unstyled mb-5 mb-lg-0">
-                          <li>
-                            <Link to={`${process.env.PUBLIC_URL}/dashboard`}>
-                              Dashboard
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              to={`${process.env.PUBLIC_URL}/bootstrap/bootstrapalerts`}
-                            >
-                              Elements
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              to={`${process.env.PUBLIC_URL}/pages/forms/formelements`}
-                            >
-                              Forms
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              to={`${process.env.PUBLIC_URL}/charts/chartjs`}
-                            >
-                              Charts
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              to={`${process.env.PUBLIC_URL}/pages/tables/datatables`}
-                            >
-                              Tables
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              to={`${process.env.PUBLIC_URL}/filemanager/fileattachments`}
-                            >
-                              Other Pages
-                            </Link>
-                          </li>
-                        </ul>
                       </Col>
                       <Col lg={2} sm={6} md={4} className="">
-                        <h6>Information</h6>
-                        <ul className="list-unstyled mb-5 mb-lg-0">
-                          <li>
-                            <Link
-                              to={`${process.env.PUBLIC_URL}/pages/extension/aboutcompany`}
-                            >
-                              Our Team
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              to={`${process.env.PUBLIC_URL}/pages/extension/aboutcompany`}
-                            >
-                              Contact US
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              to={`${process.env.PUBLIC_URL}/pages/extension/aboutcompany`}
-                            >
-                              About
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              to={`${process.env.PUBLIC_URL}/pages/extension/services`}
-                            >
-                              Services
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              to={`${process.env.PUBLIC_URL}/pages/extension/blogs`}
-                            >
-                              Blog
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              to={`${process.env.PUBLIC_URL}/pages/extension/term`}
-                            >
-                              Terms and Services
-                            </Link>
-                          </li>
-                        </ul>
                       </Col>
                       <Col lg={4} sm={12} md={4} className="">
                         <div className="">

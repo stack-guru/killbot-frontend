@@ -14,20 +14,6 @@ const SideMenuIcon = () => {
   document.querySelector(".app").classList.toggle("sidenav-toggled");
 }
 
-// Darkmode
-const DarkMode = () => {
-  if(document.querySelector(".app").classList.contains('dark-mode')){
-    document.querySelector(".app").classList.remove('dark-mode');
-    let DarkMenu1 = document.querySelector("#myonoffswitch1")
-    DarkMenu1.checked = true;
-  }
-  else{
-    document.querySelector(".app").classList.add('dark-mode');
-    let DarkMenu1 = document.querySelector("#myonoffswitch2")
-    DarkMenu1.checked = true;
-  }
-}
-
 // FullScreen
 var elem = document.documentElement;
 var i = true
@@ -50,17 +36,6 @@ const Fullscreen = (vale) => {
     default:
       break;
   }
-}
-
-// SwitcherMenu
-
-const SidSwitcherIcon = () => {
-
-  //leftsidemenu
-  document.querySelector(".demo_changer").classList.toggle("active");
-  let Rightside = document.querySelector(".demo_changer")
-  Rightside.style.right = "0px";
-
 }
 
 const RightSideBar = () => {
@@ -153,6 +128,12 @@ const Header = ({ local_varaiable,AddToCart }) => {
 
   // let location = useLocation();
 
+  const signOut = () => {
+    // auth.signOut(); 
+    localStorage.removeItem("isAuthenticated");
+    routeChange();
+  }
+
 
   const [FiltershopingData, sethopingData] = useState([])
 	const [Price, setPrice] = useState(0)
@@ -207,27 +188,6 @@ const Header = ({ local_varaiable,AddToCart }) => {
               <img src={require("../../assets/images/brand/logo-white.png")} className="header-brand-img desktop-logo" alt="logo" />
               <img src={require("../../assets/images/brand/logo-dark.png")} className="header-brand-img light-logo1" alt="logo" />
             </Link>
-            <div className="main-header-center ms-3 d-none d-lg-block">
-              <FormControl onChange={(ele => { myfunction(ele.target.value); setInputValue(ele.target.value) })} onClick={() => { setShow1(true) }} placeholder="Search for results..." type="search" />
-              <button className='btn px-0 pt-2'><i className="fe fe-search" aria-hidden="false"></i></button>
-              {show1 ?
-                <div className="card search-result p-absolute w-100 card border mt-1">
-                  <div className="card-header">
-                    <h4 className="card-title me-2 text-break">Search result of "{InputValue}" </h4>
-                  </div>
-                  <ul className='card-body list-group'>
-                    {show2 ?
-                      NavData.map((e) =>
-                        <li key={Math.random()}>
-                          <Link className='list-group-item' to={`${e.path}/`}>{e.title}</Link>
-                        </li>
-                      )
-                      : <b className={`${searchcolor} errortextHilight list-group-item`}>{searchval}</b>}
-                  </ul>
-
-                </div>
-                : ""}
-            </div>
 
             <Navbar className="d-flex order-lg-2 ms-auto header-right-icons">
               <Dropdown className="dropdown d-none" >
@@ -264,99 +224,6 @@ const Header = ({ local_varaiable,AddToCart }) => {
                         </InputGroup>
                       </Dropdown.Menu>
                     </Dropdown>
-
-                    {/* Country Select Modal */}
-
-                    <div className="d-flex country">
-                      <Link to='#' onClick={handleShow} className="nav-link icon text-center"><i className="fe fe-globe"></i><span className="fs-16 ms-2 d-none d-xl-block">English</span></Link>
-                      <Modal className='modal fade' show={show} onHide={handleClose} centered>
-                        <Modal.Header>
-                          <Modal.Title as='h6'>Choose Country</Modal.Title>
-                          <span className="d-flex ms-auto" onClick={handleClose}><i className='fe fe-x ms-auto' ></i></span>
-                        </Modal.Header>
-                        <Modal.Body>
-                          <Row as='ul' className="p-3">
-                            <Col lg={6} as='li' className="mb-2">
-                              <Link to="#" className="btn btn-country btn-lg btn-block active">
-                                <span className="country-selector"><img alt="" src={require("../../assets/images/flags-img/us_flag.jpg")}
-                                  className="me-3 language" /></span>USA
-                              </Link>
-                            </Col>
-                            <Col lg={6} as='li' className="mb-2">
-                              <Link to="#" className="btn btn-country btn-lg btn-block">
-                                <span className="country-selector"><img alt=""
-                                  src={require("../../assets/images/flags-img/italy_flag.jpg")}
-                                  className="me-3 language" /></span>Italy
-                              </Link>
-                            </Col>
-                            <Col lg={6} as='li' className="mb-2">
-                              <Link to="#" className="btn btn-country btn-lg btn-block">
-                                <span className="country-selector"><img alt=""
-                                  src={require("../../assets/images/flags-img/spain_flag.jpg")}
-                                  className="me-3 language" /></span>Spain
-                              </Link>
-                            </Col>
-                            <Col lg={6} as='li' className="mb-2">
-                              <Link to="#" className="btn btn-country btn-lg btn-block">
-                                <span className="country-selector"><img alt=""
-                                  src={require("../../assets/images/flags-img/india_flag.jpg")}
-                                  className="me-3 language" /></span>India
-                              </Link>
-                            </Col>
-                            <Col lg={6} as='li' className="mb-2">
-                              <Link to="#" className="btn btn-country btn-lg btn-block">
-                                <span className="country-selector"><img alt=""
-                                  src={require("../../assets/images/flags-img/french_flag.jpg")}
-                                  className="me-3 language" /></span>French
-                              </Link>
-                            </Col>
-                            <Col lg={6} as='li' className="mb-2">
-                              <Link to="#" className="btn btn-country btn-lg btn-block">
-                                <span className="country-selector"><img alt=""
-                                  src={require("../../assets/images/flags-img/russia_flag.jpg")}
-                                  className="me-3 language" /></span>Russia
-                              </Link>
-                            </Col>
-                            <Col lg={6} as='li' className="mb-2">
-                              <Link to="#" className="btn btn-country btn-lg btn-block">
-                                <span className="country-selector"><img alt=""
-                                  src={require("../../assets/images/flags-img/germany_flag.jpg")}
-                                  className="me-3 language" /></span>Germany
-                              </Link>
-                            </Col>
-                            <Col lg={6} as='li' className="mb-2">
-                              <Link to="#" className="btn btn-country btn-lg btn-block">
-                                <span className="country-selector"><img alt=""
-                                  src={require("../../assets/images/flags-img/argentina.jpg")}
-                                  className="me-3 language" /></span>Argentina
-                              </Link>
-                            </Col>
-                            <Col lg={6} as='li' className="mb-2">
-                              <Link to="#" className="btn btn-country btn-lg btn-block">
-                                <span className="country-selector"><img alt="" src={require("../../assets/images/flags-img/malaysia.jpg")}
-                                  className="me-3 language" /></span>Malaysia
-                              </Link>
-                            </Col>
-                            <Col lg={6} as='li' className="mb-2">
-                              <Link to="#" className="btn btn-country btn-lg btn-block">
-                                <span className="country-selector"><img alt="" src={require("../../assets/images/flags-img/turkey.jpg")}
-                                  className="me-3 language" /></span>Turkey
-                              </Link>
-                            </Col>
-                          </Row>
-                        </Modal.Body>
-                      </Modal>
-
-                    </div>
-
-                    {/* Dark Mode */}
-
-                    <div className="dropdown  d-flex">
-                      <Nav.Link className="nav-link icon theme-layout nav-link-bg layout-setting"  onClick={() => DarkMode()}>
-                        <span className="dark-layout"><i className="fe fe-moon"></i></span>
-                        <span className="light-layout"><i className="fe fe-sun"></i></span>
-                      </Nav.Link>
-                    </div>
 
                     {/* <!-- Shopping-Cart Theme-Layout --> */}
 
@@ -409,158 +276,6 @@ const Header = ({ local_varaiable,AddToCart }) => {
                       </Nav.Link>
                     </div>
 
-                    {/* Notification */}
-
-                    <Dropdown className="d-flex notifications">
-                      <Dropdown.Toggle variant='' className="nav-link icon no-caret"><i className="fe fe-bell"></i><span className=" pulse"></span></Dropdown.Toggle>
-                      <Dropdown.Menu className="dropdown-menu-end dropdown-menu-arrow">
-                        <div className="drop-heading border-bottom">
-                          <div className="d-flex">
-                            <h6 className="mt-1 mb-0 fs-16 fw-semibold text-dark">Notifications
-                            </h6>
-                          </div>
-                        </div>
-                        <div className="notifications-menu">
-                          <Dropdown.Item className="d-flex" href={`${process.env.PUBLIC_URL}/Pages/notificationlist`}>
-                            <div
-                              className="me-3 notifyimg  bg-primary brround box-shadow-primary">
-                              <i className="fe fe-mail"></i>
-                            </div>
-                            <div className="mt-1">
-                              <h5 className="notification-label mb-1">New Application received
-                              </h5>
-                              <span className="notification-subtext">3 days ago</span>
-                            </div>
-                          </Dropdown.Item>
-                          <Dropdown.Item className="d-flex" href={`${process.env.PUBLIC_URL}/Pages/notificationlist`}>
-                            <div
-                              className="me-3 notifyimg  bg-secondary brround box-shadow-secondary">
-                              <i className="fe fe-check-circle"></i>
-                            </div>
-                            <div className="mt-1">
-                              <h5 className="notification-label mb-1">Project has been
-                                approved</h5>
-                              <span className="notification-subtext">2 hours ago</span>
-                            </div>
-                          </Dropdown.Item>
-                          <Dropdown.Item className="d-flex" href={`${process.env.PUBLIC_URL}/Pages/notificationlist`}>
-                            <div
-                              className="me-3 notifyimg  bg-success brround box-shadow-success">
-                              <i className="fe fe-shopping-cart"></i>
-                            </div>
-                            <div className="mt-1">
-                              <h5 className="notification-label mb-1">Your Product Delivered
-                              </h5>
-                              <span className="notification-subtext">30 min ago</span>
-                            </div>
-                          </Dropdown.Item>
-                          <Dropdown.Item className="d-flex" href={`${process.env.PUBLIC_URL}/Pages/notificationlist`}>
-                            <div className="me-3 notifyimg bg-pink brround box-shadow-pink">
-                              <i className="fe fe-user-plus"></i>
-                            </div>
-                            <div className="mt-1">
-                              <h5 className="notification-label mb-1">Friend Requests</h5>
-                              <span className="notification-subtext">1 day ago</span>
-                            </div>
-                          </Dropdown.Item>
-                        </div>
-                        <div className="dropdown-divider m-0"></div>
-                        <Dropdown.Item href={`${process.env.PUBLIC_URL}/Pages/notificationlist`}
-                          className="dropdown-item text-center p-3 text-muted">View all
-                          Notification</Dropdown.Item>
-                      </Dropdown.Menu>
-                    </Dropdown>
-
-                    {/* Messages */}
-
-                    <Dropdown className="d-flex message">
-                      <Dropdown.Toggle variant='' className="nav-link icon text-center no-caret">
-                        <i className="fe fe-message-square"></i><span className="pulse-danger"></span>
-                      </Dropdown.Toggle>
-                      <Dropdown.Menu className="dropdown-menu-end dropdown-menu-arrow">
-                        <div className="drop-heading border-bottom">
-                          <div className="d-flex">
-                            <h6 className="mt-1 mb-0 fs-16 fw-semibold text-dark">You have 5
-                              Messages</h6>
-                            <div className="ms-auto">
-                              <Link to="#" className="text-muted p-0 fs-12">make all unread</Link>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="message-menu">
-                          <Dropdown.Item className="d-flex" href={`${process.env.PUBLIC_URL}/apps/chat`}>
-                            <img
-                              className="avatar avatar-md brround me-3 align-self-center cover-image" alt='user-1'
-                              src={require("../../assets/images/users/1.jpg")} />
-                            <div className="wd-90p">
-                              <div className="d-flex">
-                                <h5 className="mb-1">Peter Theil</h5>
-                                <small className="text-muted ms-auto text-end">
-                                  6:45 am
-                                </small>
-                              </div>
-                              <span>Commented on file Guest list....</span>
-                            </div>
-                          </Dropdown.Item>
-                          <Dropdown.Item className="d-flex" href={`${process.env.PUBLIC_URL}/apps/chat`}>
-                            <img
-                              className="avatar avatar-md brround me-3 align-self-center cover-image" alt='user-15'
-                              src={require("../../assets/images/users/15.jpg")} />
-                            <div className="wd-90p">
-                              <div className="d-flex">
-                                <h5 className="mb-1">Abagael Luth</h5>
-                                <small className="text-muted ms-auto text-end">
-                                  10:35 am
-                                </small>
-                              </div>
-                              <span>New Meetup Started......</span>
-                            </div>
-                          </Dropdown.Item>
-                          <Dropdown.Item className="d-flex" href={`${process.env.PUBLIC_URL}/apps/chat`}>
-                            <img
-                              className="avatar avatar-md brround me-3 align-self-center cover-image" alt='user-12'
-                              src={require("../../assets/images/users/12.jpg")} />
-                            <div className="wd-90p">
-                              <div className="d-flex">
-                                <h5 className="mb-1">Brizid Dawson</h5>
-                                <small className="text-muted ms-auto text-end">
-                                  2:17 pm
-                                </small>
-                              </div>
-                              <span>Brizid is in the Warehouse...</span>
-                            </div>
-                          </Dropdown.Item>
-                          <Dropdown.Item className="d-flex" href={`${process.env.PUBLIC_URL}/apps/chat`}>
-                            <img
-                              className="avatar avatar-md brround me-3 align-self-center cover-image" alt='user-4'
-                              src={require("../../assets/images/users/4.jpg")} />
-                            <div className="wd-90p">
-                              <div className="d-flex">
-                                <h5 className="mb-1">Shannon Shaw</h5>
-                                <small className="text-muted ms-auto text-end">
-                                  7:55 pm
-                                </small>
-                              </div>
-                              <span>New Product Realease......</span>
-                            </div>
-                          </Dropdown.Item>
-
-                        </div>
-                        <div className="dropdown-divider m-0"></div>
-                        <Dropdown.Item to="#" className="text-center p-3 text-muted">See all
-                          Messages</Dropdown.Item>
-                      </Dropdown.Menu>
-                    </Dropdown>
-
-                    {/* Right Side-bar */}
-
-                    <div className="dropdown d-flex header-settings" onClick={() => RightSideBar()}>
-                      <Link to="#;" className="nav-link icon"
-                        data-bs-toggle="sidebar-right" data-target=".sidebar-right">
-                        <i className="fe fe-align-right"></i>
-                      </Link>
-                    </div>
-
                     {/* Profile  */}
 
                     <Dropdown className="d-flex profile-1">
@@ -586,7 +301,7 @@ const Header = ({ local_varaiable,AddToCart }) => {
                         <Dropdown.Item className="dropdown-item" href={`${process.env.PUBLIC_URL}/Authentication/lockscreen`}>
                           <i className="dropdown-icon fe fe-lock"></i> Lockscreen
                         </Dropdown.Item>
-                        <Dropdown.Item className="dropdown-item" onClick={() => { auth.signOut(); routeChange() }}>
+                        <Dropdown.Item className="dropdown-item" onClick={signOut}>
                           <i className="dropdown-icon fe fe-alert-circle"></i> Sign out
                         </Dropdown.Item>
                       </Dropdown.Menu>
@@ -594,12 +309,6 @@ const Header = ({ local_varaiable,AddToCart }) => {
 
                   </div>
                 </Navbar.Collapse>
-              </div>
-
-              {/* Switcher  */}
-
-              <div className="demo-icon nav-link icon" onClick={() => SidSwitcherIcon()}>
-                <i className="fe fe-settings fa-spin  text_primary"></i>
               </div>
 
             </Navbar>

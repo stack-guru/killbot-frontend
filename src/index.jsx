@@ -142,6 +142,16 @@ const AuthenticationPage = lazy(() => import('./components/AuthenticationPage'))
 const ErrorPages = lazy(() => import('./components/ErrorPages'));
 const Switcherapp = lazy(() => import("./components/Switcherapp"))
 const Landing = lazy(() => import("./components/Landing"))
+const UserManagement = lazy(() => import("./components/UserManagement"))
+const ApiMonitoring = lazy(() => import("./components/ApiMonitoring"))
+const ShortLinkMonitoring = lazy(() => import("./components/ShortLinkMonitoring"))
+const PackageManage = lazy(() => import("./components/PackageManage"))
+const BotRedirection = lazy(() => import("./components/BotRedirection"))
+const AllowedCountry = lazy(() => import("./components/AllowedCountry"))
+const Whitelist = lazy(() => import("./components/Whitelist"))
+const Blacklist = lazy(() => import("./components/Blacklist"))
+const DisposalEmail = lazy(() => import("./components/DisposalEmail"))
+const PhoneNumber = lazy(() => import("./components/PhoneNumber"))
 
 const container = document.getElementById('root');
 const root = createRoot(container);
@@ -175,6 +185,16 @@ root.render(
 
             <Route path={`${process.env.PUBLIC_URL}/`} element={<ProtectedRoute><App /></ProtectedRoute>}>
               <Route path={`${process.env.PUBLIC_URL}/dashboard`} element={<Dashboard />} />
+              <Route path={`${process.env.PUBLIC_URL}/user-management`} element={<UserManagement />} />
+              <Route path={`${process.env.PUBLIC_URL}/api-monitoring`} element={<ApiMonitoring />} />
+              <Route path={`${process.env.PUBLIC_URL}/short-link-monitoring-stats`} element={<ShortLinkMonitoring />} />
+              <Route path={`${process.env.PUBLIC_URL}/package-management`} element={<PackageManage />} />
+              <Route path={`${process.env.PUBLIC_URL}/bot-redirection`} element={<BotRedirection />} />
+              <Route path={`${process.env.PUBLIC_URL}/allowed-country`} element={<AllowedCountry />} />
+              <Route path={`${process.env.PUBLIC_URL}/whitelist`} element={<Whitelist />} />
+              <Route path={`${process.env.PUBLIC_URL}/blacklist`} element={<Blacklist />} />
+              <Route path={`${process.env.PUBLIC_URL}/disposal-email`} element={<DisposalEmail />} />
+              <Route path={`${process.env.PUBLIC_URL}/phonenumber`} element={<PhoneNumber />} />
 
               {/* Apps */}
               <Route>
@@ -380,3 +400,4 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+

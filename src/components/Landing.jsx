@@ -5,7 +5,7 @@ import LandingPage from "./LandingPage/LandingPage";
 const Landing = () => {
   document.querySelector("body").classList.add("landing-page", "horizontal");
   document.querySelector("body").classList.add( 'app', 'sidebar-mini', 'ltr','light-mode');
-
+  document.querySelector("body").classList.remove("dark-mode");
   document
     .querySelector("body")
     .classList.remove("sidebar-mini", "transparent-mode", "layout-boxed");

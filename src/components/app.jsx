@@ -13,7 +13,7 @@ import store from './../Redux/store';
 
 const App = () => {
 
-  document.querySelector("body").classList.add( 'app', 'sidebar-mini', 'ltr','light-mode');
+  document.querySelector("body").classList.add( 'app', 'sidebar-mini', 'ltr','dark-mode');
   document.querySelector("body").classList.remove('login-img', 'landing-page', 'horizontal');
 
   return(
