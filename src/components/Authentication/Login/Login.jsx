@@ -6,8 +6,6 @@ import { Password } from '../../../Data/Authenticatepage/DataAuthentication';
 import ReCAPTCHA from "react-google-recaptcha";
 
 const Login = () => {
-  document.querySelector("body").classList.remove("dark-mode");
-  
   const navigate = useNavigate()
   // const Log =()=>{
   //   let Rightside = document.querySelector(".mobile-num")

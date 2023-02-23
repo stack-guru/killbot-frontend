@@ -101,7 +101,7 @@ const LandingPage = () => {
                 className="app-sidebar__overlay"
                 data-bs-toggle="sidebar"
               ></div>
-              <div className="app-sidebar bg-transparent horizontal-main">
+              <div className="app-sidebar horizontal-main">
                 <Container>
                   <Row>
                     <Navbar className="main-sidemenu navbar px-0 justify-content-between">
@@ -202,8 +202,9 @@ const LandingPage = () => {
               </div>
               {/* <!--/APP-SIDEBAR--> */}
             </div>
+
             <div
-              className="demo-screen-headline main-demo main-demo-1 spacing-top overflow-hidden"
+              className="demo-screen-headline main-demo main-demo-1 spacing-top overflow-hidden bg-landing"
               id="home"
             >
               <Container className="px-sm-0">
@@ -237,6 +238,7 @@ const LandingPage = () => {
                 </Row>
               </Container>
             </div>
+            
           </div>
           <div className="main-content mt-0">
             <div className="side-app">
@@ -245,15 +247,15 @@ const LandingPage = () => {
                 <div className="">
 
                   {/* <!-- ROW-2 OPEN --> */}
-                  <div className="sptb section custom-bg-dark" id="Features">
+                  <div className="sptb section" id="Features">
                     <Container>
                       <Row>
-                        <h4 className="text-center fw-semibold text-white">Features</h4>
+                        <h4 className="text-center fw-semibold">Features</h4>
                         <span className="landing-title"></span>
-                        <h2 className="fw-semibold text-center text-white">
+                        <h2 className="fw-semibold text-center">
                           Killbot Main Features
                         </h2>
-                        <p className="text-default mb-5 text-center text-white">
+                        <p className="text-default mb-5 text-center">
                           Your website, APIs, and applications are your key channels for doing business with your customers and suppliers. As more and more shift online, ensuring these resources are secure, performant and reliable is a business imperative. Killbot is a complete solution to enable this for anything connected to the Internet.
                         </p>
                         <Row className="mt-7">
@@ -870,7 +872,7 @@ const LandingPage = () => {
                   {/* <!-- ROW-2 CLOSED --> */}
 
                   {/* <!-- ROW-5 OPEN --> */}
-                  <div className="section">
+                  {/* <div className="section">
                     <Container>
                       <Row>
                         <section className="sptb demo-screen-demo" id="faqs">
@@ -1160,18 +1162,18 @@ const LandingPage = () => {
                         </section>
                       </Row>
                     </Container>
-                  </div>
+                  </div> */}
                   {/* <!-- ROW-5 CLOSED --> */}
 
                   {/* <!-- ROW-6 OPEN --> */}
-                  <div className="section custom-bg-dark">
+                  <div className="bg-landing section">
                     <Container>
                       <Row>
-                        <h4 className="text-center fw-semibold text-white">
+                        <h4 className="text-center fw-semibold">
                           Choose a plan{" "}
                         </h4>
                         <span className="landing-title"></span>
-                        <h2 className="text-center fw-semibold text-white">
+                        <h2 className="text-center fw-semibold">
                           Find the{" "}
                           <span className="text-primary">Perfect Plan</span> for
                           your Business.
@@ -1628,7 +1630,7 @@ const LandingPage = () => {
                         </Row>
                         <section className="sptb demo-screen-demo" id="faqs">
                           <Row className="align-items-center">
-                            <Col md={12} lg={6}>
+                            <Col md={12} lg={12}>
                               <Col md={12} className="grid-item  px-0">
                                 <Accordion>
                                   <Accordion.Item
@@ -1791,12 +1793,12 @@ const LandingPage = () => {
                                 </Accordion>
                               </Col>
                             </Col>
-                            <Col md={12} lg={6} className="">
+                            {/* <Col md={12} lg={6} className="">
                               <img
                                 src={require("../../assets/images/landing/2.png")}
                                 alt=""
                               />
-                            </Col>
+                            </Col> */}
                           </Row>
                         </section>
                       </Row>
@@ -1804,172 +1806,9 @@ const LandingPage = () => {
                   </div>
                   {/* <!-- ROW-7 CLOSED --> */}
 
-                  {/* <!-- ROW-8 OPEN --> */}
-                  <div className="section bg-landing" id="Blog">
-                    <Container>
-                      <Row>
-                        <h4 className="text-center fw-semibold">Blog Posts </h4>
-                        <span className="landing-title"></span>
-                        <h2 className="text-center fw-semibold mb-7">
-                          Latest from Blog.
-                        </h2>
-                        <Col lg={6}>
-                          <Card className="bg-transparent">
-                            <Card.Body className="px-1">
-                              <div className="d-sm-flex overflow-visible">
-                                <img
-                                  className="card-aside-column br-5 cover-image"
-                                  alt="media-12"
-                                  src={require("../../assets/images/media/12.jpg")}
-                                />
-                                <div className="ps-3 flex-column">
-                                  <Badge
-                                    bg="primary"
-                                    className="me-1 mb-1 mt-1"
-                                  >
-                                    Business
-                                  </Badge>
-                                  <h3>
-                                    <Link
-                                      to={`${process.env.PUBLIC_URL}/Pages/extension/blogdetails`}
-                                    >
-                                      Voluptatem quia voluptas...
-                                    </Link>
-                                  </h3>
-                                  <div className="">
-                                    Excepteur sint occaecat cupidatat non
-                                    proident, accusantium sunt in culpa qui
-                                    officia deserunt mollit anim id est
-                                    laborum....
-                                  </div>
-                                </div>
-                              </div>
-                            </Card.Body>
-                          </Card>
-                        </Col>
-                        <Col lg={6}>
-                          <Card className="bg-transparent">
-                            <Card.Body className="px-1">
-                              <div className="d-sm-flex overflow-visible">
-                                <img
-                                  className="card-aside-column br-5 cover-image"
-                                  alt="media-22"
-                                  src={require("../../assets/images/media/22.jpg")}
-                                />
-
-                                <div className="ps-3 flex-column">
-                                  <Badge bg="danger" className="me-1 mb-1 mt-1">
-                                    Lifestyle
-                                  </Badge>
-                                  <h3>
-                                    <Link
-                                      to={`${process.env.PUBLIC_URL}/pages/extension/blogdetails`}
-                                    >
-                                      Generator on the Internet..
-                                    </Link>
-                                  </h3>
-                                  <div className="">
-                                    Excepteur sint occaecat cupidatat non
-                                    proident, accusantium sunt in culpa qui
-                                    officia deserunt mollit anim id est
-                                    laborum....
-                                  </div>
-                                </div>
-                              </div>
-                            </Card.Body>
-                          </Card>
-                          {/* <!-- COL-END --> */}
-                        </Col>
-                        <Col lg={6}>
-                          <Card className="bg-transparent">
-                            <Card.Body className="px-1">
-                              <div className="d-sm-flex overflow-visible">
-                                <img
-                                  className="card-aside-column br-5 cover-image"
-                                  alt="about"
-                                  src={require("../../assets/images/media/27.jpg")}
-                                />
-
-                                <div className="ps-3 flex-column">
-                                  <Badge
-                                    bg="secondary"
-                                    className="me-1 mb-1 mt-1"
-                                  >
-                                    Travel
-                                  </Badge>
-                                  <h3>
-                                    <Link
-                                      to={`${process.env.PUBLIC_URL}/pages/extension/blogdetails`}
-                                    >
-                                      Generator on the Internet..
-                                    </Link>
-                                  </h3>
-                                  <div className="">
-                                    Excepteur sint occaecat cupidatat non
-                                    proident, accusantium sunt in culpa qui
-                                    officia deserunt mollit anim id est
-                                    laborum....
-                                  </div>
-                                </div>
-                              </div>
-                            </Card.Body>
-                          </Card>
-                          {/* <!-- COL-END --> */}
-                        </Col>
-                        <Col lg={6}>
-                          <Card className="bg-transparent">
-                            <Card.Body className="px-1">
-                              <div className="d-sm-flex overflow-visible">
-                                <img
-                                  className="card-aside-column br-5 cover-image"
-                                  alt="media-25"
-                                  src={require("../../assets/images/media/25.jpg")}
-                                />
-
-                                <div className="ps-3 flex-column">
-                                  <Badge
-                                    bg="success"
-                                    className="me-1 mb-1 mt-1"
-                                  >
-                                    Meeting
-                                  </Badge>
-                                  <h3>
-                                    <Link
-                                      to={`${process.env.PUBLIC_URL}/pages/extension/blogdetails`}
-                                    >
-                                      Voluptatem quia voluptas...
-                                    </Link>
-                                  </h3>
-                                  <div className="">
-                                    Excepteur sint occaecat cupidatat non
-                                    proident, accusantium sunt in culpa qui
-                                    officia deserunt mollit anim id est
-                                    laborum....
-                                  </div>
-                                </div>
-                              </div>
-                            </Card.Body>
-                          </Card>
-                          {/* <!-- COL-END --> */}
-                        </Col>
-                        <div className="text-center mt-5">
-                          <Link
-                            to={`${process.env.PUBLIC_URL}/pages/extension/blogs`}
-                            className="btn btn-outline-primary pt-2 pb-2"
-                            target="_blank"
-                          >
-                            <i className="fe fe-arrow-right mx-2"></i>Discover
-                            More
-                          </Link>
-                        </div>
-                      </Row>
-                    </Container>
-                  </div>
-                  {/* <!-- ROW-8 CLOSED --> */}
-
                   {/* <!-- ROW-9 OPEN --> */}
                   <div
-                    className="testimonial-owl-landing section pb-0"
+                    className="testimonial-owl-landing section pb-0 bg-landing"
                     id="Clients"
                   >
                     <Container>
@@ -1994,7 +1833,7 @@ const LandingPage = () => {
                   {/* <!-- ROW-9 CLOSED --> */}
 
                   {/* <!-- ROW-10 OPEN --> */}
-                  <div className="section pb-0 custom-bg-dark" id="Contact">
+                  <div className="section pb-0" id="Contact">
                     <Container>
                       <div className="">
                         <Card className="card-shadow">

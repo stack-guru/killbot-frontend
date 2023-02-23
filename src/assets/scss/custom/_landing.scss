@@ -539,7 +539,7 @@
     }
 
     .testimonial-owl-landing {
-        background-image: url(../images/landing/backgrounds/2.jpg);
+        // background-image: url(../images/landing/backgrounds/2.jpg);
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
@@ -559,7 +559,7 @@
             inset-block-start: 0;
             width: 100%;
             height: 100%;
-            background-image: linear-gradient(to right, rgba(108, 95, 252, 0.40) 0%, rgba(9, 199, 255, 0.49) 90%);
+            // background-image: linear-gradient(to right, rgba(108, 95, 252, 0.40) 0%, rgba(9, 199, 255, 0.49) 90%);
         }
     }
 
@@ -1443,10 +1443,10 @@
         }
 
         .landing-top-header {
-            background-image: url(../images/landing/backgrounds/6.png);
+            // background-image: url(../images/landing/backgrounds/6.png);
 
             &::before {
-                background-image: url(../images/landing/backgrounds/7.png);
+                // background-image: url(../images/landing/backgrounds/7.png);
             }
         }
 
