@@ -16,7 +16,8 @@ import {
 } from "react-bootstrap";
 import { getApiKey, generateApikey } from "../../Slices/userSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { API_URL } from "../../constants";
+
+const API_URL = process.env.REACT_APP_API_URL
 
 const ApiMonitoring = () => {
   const dispatch = useDispatch()

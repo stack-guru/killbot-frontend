@@ -1,7 +1,7 @@
 import { createSlice, createSelector, PayloadAction, createAsyncThunk, } from "@reduxjs/toolkit";
 import axios from "axios";
 import {decodeUserToken, authHeader} from '../services/authService';
-import { API_URL } from "../constants";
+const API_URL = process.env.REACT_APP_API_URL
 
 export const signUp = createAsyncThunk(
     "user/signUp", async({name, email, password}, thunkAPI) => {
