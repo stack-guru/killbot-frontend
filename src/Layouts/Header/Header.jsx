@@ -5,9 +5,11 @@ import { FormControl, Nav, Modal, Row, Col, Dropdown, Badge, Navbar, InputGroup 
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import { MENUITEMS } from '../Sidebar/Sidemenu';
 import { auth } from '../../Firebase/firebase';
-import { connect } from "react-redux";  
+// import { connect } from "react-redux";  
 import { shopingData } from '../../Data/DataECommerce/DataShoppingCart';
-import { AddToCart } from '../../Redux/action';
+// import { AddToCart } from '../../Redux/action';
+import { logOut } from "../../Slices/userSlice";
+import { useSelector, useDispatch } from "react-redux";
 
 //leftsidemenu
 const SideMenuIcon = () => {
@@ -46,12 +48,11 @@ const RightSideBar = () => {
 }
 
 const Header = ({ local_varaiable,AddToCart }) => {
-
-
   document.querySelector('.main-content')?.addEventListener('click', () => {
     document.querySelector(".search-result")?.classList.add("d-none")
   })
 
+  const dispatch = useDispatch();
 
   // For CountrySelector Modal
   const [show, setShow] = useState(false);
@@ -130,36 +131,37 @@ const Header = ({ local_varaiable,AddToCart }) => {
 
   const signOut = () => {
     // auth.signOut(); 
-    localStorage.removeItem("isAuthenticated");
-    routeChange();
+    // localStorage.removeItem("isAuthenticated");
+    dispatch(logOut())
+    routeChange()
   }
 
 
   const [FiltershopingData, sethopingData] = useState([])
 	const [Price, setPrice] = useState(0)
 
-	useEffect(() => {
-    console.log(local_varaiable);
-		if (local_varaiable == undefined) {
-			sethopingData(shopingData)
-			shopingData.filter((ele) => {
-				setPrice(Number(ele.newprice) + Price);
-			})
-		}
-		else if (local_varaiable.length == 0) {
-			sethopingData(shopingData)
-			shopingData.filter((ele) => {
-				setPrice(Number(ele.newprice) + Price);
-			})
-		}
-		else {
-			sethopingData(local_varaiable)
-			local_varaiable.filter((ele) => {
-				setPrice(Number(ele.newprice) + Price);
-			})
-		}
+	// useEffect(() => {
+  //   console.log(local_varaiable);
+	// 	if (local_varaiable == undefined) {
+	// 		sethopingData(shopingData)
+	// 		shopingData.filter((ele) => {
+	// 			setPrice(Number(ele.newprice) + Price);
+	// 		})
+	// 	}
+	// 	else if (local_varaiable.length == 0) {
+	// 		sethopingData(shopingData)
+	// 		shopingData.filter((ele) => {
+	// 			setPrice(Number(ele.newprice) + Price);
+	// 		})
+	// 	}
+	// 	else {
+	// 		sethopingData(local_varaiable)
+	// 		local_varaiable.filter((ele) => {
+	// 			setPrice(Number(ele.newprice) + Price);
+	// 		})
+	// 	}
 
-	},[local_varaiable])
+	// },[local_varaiable])
 
   // function handleRemove(id) {
 	// 	if (local_varaiable == undefined) {
@@ -319,7 +321,8 @@ const Header = ({ local_varaiable,AddToCart }) => {
   )
 
 };
-const mapStateToProps = (state) => ({
-  local_varaiable: state,
-});
-export default connect(mapStateToProps, {AddToCart})(Header);
+// const mapStateToProps = (state) => ({
+//   local_varaiable: state,
+// });
+// export default connect(mapStateToProps, {AddToCart})(Header);
+export default Header;

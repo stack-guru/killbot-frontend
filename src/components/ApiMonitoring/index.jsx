@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import styles from "./style.module.scss";
 import { Link } from "react-router-dom";
 import PageHeader from "../../Layouts/PageHeader/PageHeader";
@@ -12,9 +12,31 @@ import {
   Tabs,
   ListGroupItem,
   ListGroup,
+  Spinner
 } from "react-bootstrap";
+import { getApiKey, generateApikey } from "../../Slices/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { API_URL } from "../../constants";
 
 const ApiMonitoring = () => {
+  const dispatch = useDispatch()
+  const { currentUser, apiKey } = useSelector(o => o.user)
+  const [generateLoading, setGenerateLoading] = useState(false)
+
+  useEffect(() => {
+    dispatch(getApiKey({email: currentUser.email}))
+  }, [])
+
+  const onGenerateApiKey = () => {
+    setGenerateLoading(true)
+    dispatch(generateApikey({email: currentUser.email})).then(() => setGenerateLoading(false))
+  }
+
+  const onClickApikey = (e) => {
+    e.target.focus()
+    e.target.select()
+  }
+
   return (
     <div className={styles.ApiMonitoring}>
       <PageHeader
@@ -31,12 +53,19 @@ const ApiMonitoring = () => {
               <input
                 className="form-control"
                 type="text"
-                defaultValue="-pATfijYbpYyDszS7LUZO3ZcF1M-IiNRn64-_MteAP1Vb"
+                value={apiKey}
+                readOnly
+                onClick={onClickApikey}
               ></input>
               <div className="text-end mt-2">
-                <Button variant="secondary">
+                { !generateLoading ? <Button variant="secondary" onClick={onGenerateApiKey}>
                   <i className="fa fa-refresh me-2"></i>Re-Generate API KEY
                 </Button>
+                  :
+                <Button variant="secondary" disabled>
+                  <Spinner className="me-2" animation="grow" size="sm" role="status" aria-hidden="true"></Spinner>
+                  <i className="fa fa-refresh me-2"></i>Re-Generate API KEY
+                </Button>}
               </div>
 
               <div className="panel panel-tabs">
@@ -44,56 +73,68 @@ const ApiMonitoring = () => {
                   <Tab className="tab-pane" eventKey="tab1" title="API">
                     <div className="p-2">
                       <div className="text-opacity text-sm mb-1">
-                        ACCOUNT DETAIL
+                        Ip Address
                       </div>
                       <input
                         className="form-control"
-                        defaultValue="https://killbot.org/api/v1/profile?apikey=-pATfijYbpYyDszS7LUZO3ZcF1M-IiNRn64-_MteAP1Vb"
+                        readOnly
+                        onClick={onClickApikey}
+                        value={`${API_URL}api/check-ip?apiKey=${apiKey}&ip=8.8.8.8`}
                       ></input>
                     </div>
                     <div className="p-2">
                       <div className="text-opacity text-sm mb-1">
-                        ACCOUNT DETAIL
+                        Disposable Email
                       </div>
                       <input
                         className="form-control"
-                        defaultValue="https://killbot.org/api/v1/profile?apikey=-pATfijYbpYyDszS7LUZO3ZcF1M-IiNRn64-_MteAP1Vb"
+                        readOnly
+                        onClick={onClickApikey}
+                        value={`${API_URL}api/check-disposal-email?apiKey=${apiKey}&email=test@example.com`}
                       ></input>
                     </div>
                     <div className="p-2">
                       <div className="text-opacity text-sm mb-1">
-                        ACCOUNT DETAIL
+                        PhoneNumber
                       </div>
                       <input
                         className="form-control"
-                        defaultValue="https://killbot.org/api/v1/profile?apikey=-pATfijYbpYyDszS7LUZO3ZcF1M-IiNRn64-_MteAP1Vb"
+                        readOnly
+                        onClick={onClickApikey}
+                        value={`${API_URL}api/check-phonenumber?apiKey=${apiKey}&number=14158586273`}
                       ></input>
                     </div>
                     <div className="p-2">
                       <div className="text-opacity text-sm mb-1">
-                        ACCOUNT DETAIL
+                        BIN
                       </div>
                       <input
                         className="form-control"
-                        defaultValue="https://killbot.org/api/v1/profile?apikey=-pATfijYbpYyDszS7LUZO3ZcF1M-IiNRn64-_MteAP1Vb"
+                        readOnly
+                        onClick={onClickApikey}
+                        value={`${API_URL}api/check-bin?apiKey=${apiKey}&issuerIdNumber=235657`}
                       ></input>
                     </div>
                     <div className="p-2">
                       <div className="text-opacity text-sm mb-1">
-                        ACCOUNT DETAIL
+                        Mobile
                       </div>
                       <input
                         className="form-control"
-                        defaultValue="https://killbot.org/api/v1/profile?apikey=-pATfijYbpYyDszS7LUZO3ZcF1M-IiNRn64-_MteAP1Vb"
+                        readOnly
+                        onClick={onClickApikey}
+                        value={`${API_URL}api/check-mobile?apiKey=${apiKey}`}
                       ></input>
                     </div>
                     <div className="p-2">
                       <div className="text-opacity text-sm mb-1">
-                        ACCOUNT DETAIL
+                        Desktop
                       </div>
                       <input
                         className="form-control"
-                        defaultValue="https://killbot.org/api/v1/profile?apikey=-pATfijYbpYyDszS7LUZO3ZcF1M-IiNRn64-_MteAP1Vb"
+                        readOnly
+                        onClick={onClickApikey}
+                        value={`${API_URL}api/check-desktop?apiKey=${apiKey}`}
                       ></input>
                     </div>
                   </Tab>
