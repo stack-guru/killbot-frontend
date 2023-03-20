@@ -1,13 +1,12 @@
 import React, { useEffect } from "react";
 import styles from "./style.module.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PageHeader from "../../Layouts/PageHeader/PageHeader";
 import { Col, Row, Card } from 'react-bootstrap';
 // import { BasicEditTable, Savetable } from '../../Data/Pages/TablesData/DataEditable';
 import UserTable from "./components/UserTable";
 
 const UserManagement = () => {
-
   return (
     <div className={styles.userManagement}>
       <PageHeader

@@ -1,8 +1,8 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { MENUITEMS } from './Sidemenu';
+import { MENUITEMS, ADMINMENUITEMS } from './Sidemenu';
 import PerfectScrollbar from 'react-perfect-scrollbar';
-
+import { useDispatch, useSelector } from 'react-redux';
 
 const Onhover = () => {
   if (document.querySelector(".app")?.classList.contains("sidenav-toggled"))
@@ -18,7 +18,8 @@ export const Sidebar = () => {
 
 
   let location = useLocation();
-  const [menuitems, setMenuitems] = useState(MENUITEMS);
+
+  const [menuitems, setMenuitems] = useState(location.pathname.includes("admin") ? ADMINMENUITEMS : MENUITEMS);
   useEffect(() => {
 
     history.push(location.pathname);  // add  history to history  stack for current location.pathname to prevent multiple history calls innerWidth  and innerWidth calls from  multiple users. This is important because the history stack is not always empty when the user clicks  the history       

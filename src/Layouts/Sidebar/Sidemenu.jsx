@@ -5,31 +5,31 @@ export const MENUITEMS = [
             { path: `${process.env.PUBLIC_URL}/dashboard`, icon: 'fe fe-home', type: 'link', active: false, selected: false, title: 'Dashboard' },
         ]
     },
-    {
-        menutitle: "Management",
-        Items: [
-            { path: `${process.env.PUBLIC_URL}/user-management`, icon: 'fa fa-user', type: 'link', active: false, selected: false, title: 'User Management' },
-            { path: `${process.env.PUBLIC_URL}/package-management`, icon: 'fa fa-cube', type: 'link', active: false, selected: false, title: 'Package Management' },
-        ]
-    },
+    // {
+    //     menutitle: "Management",
+    //     Items: [
+    //         { path: `${process.env.PUBLIC_URL}/user-management`, icon: 'fa fa-user', type: 'link', active: false, selected: false, title: 'User Management' },
+    //         { path: `${process.env.PUBLIC_URL}/package-management`, icon: 'fa fa-cube', type: 'link', active: false, selected: false, title: 'Package Management' },
+    //     ]
+    // },
     {
         menutitle: "Product",
         Items: [
             { path: `${process.env.PUBLIC_URL}/api-monitoring`, icon: 'fa fa-code', type: 'link', active: false, selected: false, title: 'API Monitoring' },
-            { path: `https://files.killbot.org`, icon: 'fa fa-ellipsis-h', type: 'link', active: false, selected: false, title: 'Short URL Script'},
-            { path: `${process.env.PUBLIC_URL}/short-link-monitoring-stats`, icon: 'fa fa-external-link', type: 'link', active: false, selected: false, title: 'Short Link Monitoring Stats' },
-            {
-                title: 'Customization', icon: "fa fa-edit", type: 'sub',Name:"",Names:"", children: [
-                    { path: `${process.env.PUBLIC_URL}/bot-redirection`, type: 'link', active: false, selected: false, title: 'Bot Redirection' },
-                    { path: `${process.env.PUBLIC_URL}/allowed-country`, type: 'link', active: false, selected: false, title: 'Allowed Country' },
-                ]
-            },
-            {
-                title: 'Ip Management', icon: "fa fa-pencil", type: 'sub',Name:"",Names:"", children: [
-                    { path: `${process.env.PUBLIC_URL}/whitelist`, type: 'link', active: false, selected: false, title: 'Whitelist Ips' },
-                    { path: `${process.env.PUBLIC_URL}/blacklist`, type: 'link', active: false, selected: false, title: 'Blacklist Ips' },
-                ]
-            },
+            // { path: `https://files.killbot.org`, icon: 'fa fa-ellipsis-h', type: 'link', active: false, selected: false, title: 'Short URL Script'},
+            { path: `${process.env.PUBLIC_URL}/short-link-monitoring-stats`, icon: 'fa fa-external-link', type: 'link', active: false, selected: false, title: 'Short Link' },
+            // {
+            //     title: 'Customization', icon: "fa fa-edit", type: 'sub',Name:"",Names:"", children: [
+            //         { path: `${process.env.PUBLIC_URL}/bot-redirection`, type: 'link', active: false, selected: false, title: 'Bot Redirection' },
+            //         { path: `${process.env.PUBLIC_URL}/allowed-country`, type: 'link', active: false, selected: false, title: 'Allowed Country' },
+            //     ]
+            // },
+            // {
+            //     title: 'Ip Management', icon: "fa fa-pencil", type: 'sub',Name:"",Names:"", children: [
+            //         { path: `${process.env.PUBLIC_URL}/whitelist`, type: 'link', active: false, selected: false, title: 'Whitelist Ips' },
+            //         { path: `${process.env.PUBLIC_URL}/blacklist`, type: 'link', active: false, selected: false, title: 'Blacklist Ips' },
+            //     ]
+            // },
             {
                 title: 'Identify Tools', icon: "fa fa-gavel", type: 'sub',Name:"",Names:"", children: [
                     { path: `${process.env.PUBLIC_URL}/disposal-email`, type: 'link', active: false, selected: false, title: 'Disposal Email' },
@@ -279,4 +279,14 @@ export const MENUITEMS = [
 
     //     ]
     // },
+]
+
+export const ADMINMENUITEMS = [
+    {
+        menutitle: "Management",
+        Items: [
+            { path: `${process.env.PUBLIC_URL}/admin/user-management`, icon: 'fa fa-user', type: 'link', active: false, selected: false, title: 'User Management' },
+            { path: `${process.env.PUBLIC_URL}/admin/package-management`, icon: 'fa fa-cube', type: 'link', active: false, selected: false, title: 'Package Management' },
+        ]
+    },
 ]

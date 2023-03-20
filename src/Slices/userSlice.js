@@ -60,7 +60,35 @@ export const generateApikey = createAsyncThunk(
         try {
             const response = await axios.post(API_URL + "generateApikey", {
                 email
-            })
+            }, {headers: authHeader()})
+            return response.data
+        } catch(error) {
+            const response = error?.response?.data || ""
+            return thunkAPI.rejectWithValue({ error: error.message, response });
+        }
+    }
+);
+
+export const changeActive = createAsyncThunk(
+    "user/changeActive", async({userId, status}, thunkAPI) => {
+        try {
+            const response = await axios.post(API_URL + "changeActive", {
+                userId, status
+            }, {headers: authHeader()})
+            return response.data
+        } catch(error) {
+            const response = error?.response?.data || ""
+            return thunkAPI.rejectWithValue({ error: error.message, response });
+        }
+    }
+);
+
+export const changeRole = createAsyncThunk(
+    "user/changeRole", async({email, role}, thunkAPI) => {
+        try {
+            const response = await axios.post(API_URL + "changeRole", {
+                email, role
+            }, {headers: authHeader()})
             return response.data
         } catch(error) {
             const response = error?.response?.data || ""
@@ -92,7 +120,6 @@ const usersSlice = createSlice({
     extraReducers: (builder) => {
         builder
         .addCase(getUsers.fulfilled, (state, {payload}) => {
-            console.log('success get user = ', payload)
             state.users = payload
         })
         .addCase(getUsers.rejected, (state, action) => {
@@ -125,6 +152,32 @@ const usersSlice = createSlice({
         })
         .addCase(getApiKey.rejected, (state, action) => {
             console.log('get api key error = ', action.error.message)
+        })
+        .addCase(changeActive.fulfilled, (state, {payload}) => {
+            let stateUsers = JSON.parse(JSON.stringify(state.users));
+            stateUsers.forEach(e => {
+                if (e._id === payload._id) {
+                    e.active = payload.active
+                    return
+                }
+            })
+            state.users = stateUsers
+        })
+        .addCase(changeActive.rejected, (state, action) => {
+            console.log('change activate error = ', action.error.message)
+        })
+        .addCase(changeRole.fulfilled, (state, {payload}) => {
+            let stateUsers = JSON.parse(JSON.stringify(state.users));
+            stateUsers.forEach(e => {
+                if (e._id === payload._id) {
+                    e.role = payload.role
+                    return
+                }
+            })
+            state.users = stateUsers
+        })
+        .addCase(changeRole.rejected, (state, action) => {
+            console.log('change role error = ', action.error.message)
         })
     }
 })

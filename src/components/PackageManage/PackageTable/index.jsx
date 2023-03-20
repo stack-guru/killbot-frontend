@@ -1,50 +1,34 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { nanoid } from "nanoid";
-import Select from 'react-select';
-import { getUsers, changeActive, changeRole } from "../../../Slices/userSlice";
+import { getPackages, addPackage, deletePackage, updatePackage } from "../../../Slices/packageSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-const roleOptions = [
-  { value: 'admin', label: 'admin'},
-  { value: 'user', label: 'user'},
-];
-
-const UserTable = () => {
+// Add New Row with Edit Table
+const PackageTable = () => {
   const dispatch = useDispatch();
-  const { users, currentUser } = useSelector((o) => o.user);
+  const {packages} = useSelector(o => o.package)
 
   useEffect(() => {
-    dispatch(getUsers());
+    dispatch(getPackages());
   }, []);
 
   useEffect(() => {
-    setContacts(users.map(e => {
-        return {
-            id: e._id,
-            name: e.name,
-            email: e.email,
-            role: e.role,
-            active: e.active ? "enable" : "disable"
-        }
-    }))
-  }, [users])
+    setContacts(packages)
+  }, [packages])
 
   const [modalShow, setModalShow] = React.useState(false);
-  
   const [contacts, setContacts] = useState([]);
   const [addFormData, setAddFormData] = useState({
     name: "",
-    email: "",
-    role: "",
-    active: ""
+    limit: 0,
+    duration: 0,
   });
 
   const [editFormData, setEditFormData] = useState({
     name: "",
-    email: "",
-    role: "",
-    active: ""
+    limit: 0,
+    duration: 0,
   });
 
   const [editContactId, setEditContactId] = useState(null);
@@ -62,34 +46,32 @@ const UserTable = () => {
   };
 
   const handleEditFormChange = (event) => {
-    // event.preventDefault();
+    event.preventDefault();
 
-    // const fieldName = event.target.getAttribute("name");
-    // const fieldValue = event.target.value;
+    const fieldName = event.target.getAttribute("name");
+    const fieldValue = event.target.value;
 
-    // const newFormData = { ...editFormData };
-    // newFormData[fieldName] = fieldValue;
+    const newFormData = { ...editFormData };
+    newFormData[fieldName] = fieldValue;
 
-    // setEditFormData(newFormData);
+    setEditFormData(newFormData);
   };
-
-  const handleRoleChange = (e, email) => {
-    dispatch(changeRole({email, role: e.value}))
-  }
 
   const handleAddFormSubmit = (event) => {
     event.preventDefault();
 
-    const newContact = {
-      id: nanoid(),
-      name: addFormData.name,
-      email: addFormData.email,
-      role: addFormData.role,
-      active: addFormData.active
-    };
+    dispatch(addPackage({name: addFormData.name, limit: addFormData.limit, duration: addFormData.duration}))
+    // const newContact = {
+    //   id: nanoid(),
+    //   fullName: addFormData.fullName,
+    //   position: addFormData.position,
+    //   start: addFormData.start,
+    //   salary: addFormData.salary,
+    //   email: addFormData.email,
+    // };
 
-    const newContacts = [...contacts, newContact];
-    setContacts(newContacts);
+    // const newContacts = [...contacts, newContact];
+    // setContacts(newContacts);
   };
 
   const handleEditFormSubmit = (event) => {
@@ -97,10 +79,11 @@ const UserTable = () => {
 
     // const editedContact = {
     //   id: editContactId,
-    //   name: editFormData.name,
+    //   fullName: editFormData.fullName,
+    //   position: editFormData.position,
+    //   start: addFormData.start,
+    //   salary: editFormData.salary,
     //   email: editFormData.email,
-    //   role: editFormData.role,
-    //   active: editFormData.active
     // };
 
     // const newContacts = [...contacts];
@@ -110,18 +93,24 @@ const UserTable = () => {
     // newContacts[index] = editedContact;
 
     // setContacts(newContacts);
+
+    dispatch(updatePackage({
+      id: editContactId,
+      name: editFormData.name,
+      limit: editFormData.limit,
+      duration: editFormData.duration
+    }))
     setEditContactId(null);
   };
 
   const handleEditClick = (event, contact) => {
     event.preventDefault();
-    setEditContactId(contact.id);
+    setEditContactId(contact._id);
 
     const formValues = {
       name: contact.name,
-      email: contact.email,
-      role: contact.salary,
-      active: contact.active
+      limit: contact.limit,
+      duration: contact.duration,
     };
 
     setEditFormData(formValues);
@@ -131,18 +120,20 @@ const UserTable = () => {
     setEditContactId(null);
   };
 
-  const handleDisableClick = (contactId, active) => {
-    // const newContacts = [...contacts];
-    // const index = contacts.findIndex((contact) => contact.id === contactId);
-    // newContacts.splice(index, 1);
-    // setContacts(newContacts);
-    const status = (active === "disable" ? true : false)
-    dispatch(changeActive({userId: contactId, status }))
+  const handleDeleteClick = (contactId) => {
+    dispatch(deletePackage({id: contactId}))
   };
 
   return (
-    <div className="app-container">
+    <div className="app-container table-responsive">
       <form onSubmit={handleEditFormSubmit}>
+        <Button
+          variant=""
+          className="btn btn-primary mb-3"
+          onClick={() => setModalShow(true)}
+        >
+          Add New Package
+        </Button>
         <table
           id="delete-datatable"
           className="table table-bordered text-nowrap border-bottom"
@@ -150,27 +141,25 @@ const UserTable = () => {
           <thead>
             <tr>
               <th>Name</th>
-              <th>Email</th>
-              <th>Role</th>
-              <th>Active</th>
+              <th>Limit</th>
+              <th>Duration</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             {contacts.map((contact) => (
-              <Fragment key={contact.id}>
-                {editContactId === contact.id ? (
+              <Fragment key={contact._id}>
+                {editContactId === contact._id ? (
                   <EditableRow
                     editFormData={editFormData}
                     handleEditFormChange={handleEditFormChange}
                     handleCancelClick={handleCancelClick}
-                    handleRoleChange={handleRoleChange}
                   />
                 ) : (
                   <ReadOnlyRow
                     contact={contact}
                     handleEditClick={handleEditClick}
-                    handleDisableClick={handleDisableClick}
+                    handleDeleteClick={handleDeleteClick}
                   />
                 )}
               </Fragment>
@@ -187,7 +176,7 @@ const UserTable = () => {
       >
         <Modal.Header>
           <Modal.Title id="contained-modal-title-vcenter">
-            Add New Row
+            Add New Package
           </Modal.Title>
           <Button
             variant=""
@@ -199,41 +188,25 @@ const UserTable = () => {
           <Form onSubmit={handleAddFormSubmit}>
             <input
               type="text"
-              name="fullName"
+              name="name"
               required
               placeholder="Enter a name..."
               onChange={handleAddFormChange}
               className="form-control mb-2"
             />
             <input
-              type="text"
-              name="position"
+              type="number"
+              name="limit"
               required
-              placeholder="Enter an addres..."
+              placeholder="Enter limit..."
               onChange={handleAddFormChange}
               className="form-control mb-2"
             />
-            {/* <input
-                type="date"
-                name="Start Date"
-                required
-                
-                onChange={handleAddFormChange}
-                className="form-control mb-2"
-              /> */}
             <input
               type="number"
-              name="salary"
+              name="duration"
               required
-              placeholder="Enter a phone number..."
-              onChange={handleAddFormChange}
-              className="form-control mb-2"
-            />
-            <input
-              type="email"
-              name="email"
-              required
-              placeholder="Enter an email..."
+              placeholder="Enter duration..."
               onChange={handleAddFormChange}
               className="form-control mb-2"
             />
@@ -258,25 +231,41 @@ const EditableRow = ({
   editFormData,
   handleEditFormChange,
   handleCancelClick,
-  handleRoleChange
 }) => {
   return (
     <tr>
       <td>
-        {editFormData.name}
+        <input
+          className="form-control"
+          type="text"
+          required
+          placeholder="name..."
+          name="name"
+          value={editFormData.name}
+          onChange={handleEditFormChange}
+        ></input>
       </td>
       <td>
-        {editFormData.email}
+        <input
+          className="form-control"
+          type="number"
+          required
+          placeholder="limit..."
+          name="limit"
+          value={editFormData.limit}
+          onChange={handleEditFormChange}
+        ></input>
       </td>
       <td>
-        <Select 
-          options={roleOptions}
-          placeholder="role"
-          onChange={(e) => handleRoleChange(e, editFormData.email)}
+        <input
+          className="form-control"
+          type="number"
+          required
+          placeholder="duration..."
+          name="duration"
+          value={editFormData.duration}
+          onChange={handleEditFormChange}
         />
-      </td>
-      <td>
-        {editFormData.active}
       </td>
       <td>
         <Button variant="" className="btn btn-primary me-1" type="submit">
@@ -293,13 +282,12 @@ const EditableRow = ({
     </tr>
   );
 };
-const ReadOnlyRow = ({ contact, handleEditClick, handleDisableClick }) => {
+const ReadOnlyRow = ({ contact, handleEditClick, handleDeleteClick }) => {
   return (
     <tr>
       <td>{contact.name}</td>
-      <td>{contact.email}</td>
-      <td>{contact.role}</td>
-      <td>{contact.active}</td>
+      <td>{contact.limit}</td>
+      <td>{contact.duration}</td>
       <td>
         <Button
           variant=""
@@ -313,13 +301,13 @@ const ReadOnlyRow = ({ contact, handleEditClick, handleDisableClick }) => {
           variant=""
           className="btn btn-danger me-1"
           type="button"
-          onClick={() => handleDisableClick(contact.id, contact.active)}
+          onClick={() => handleDeleteClick(contact._id)}
         >
-          {contact.active === "disable" ? "Enable" : "Disable"}
+          Delete
         </Button>
       </td>
     </tr>
   );
 };
 
-export default UserTable;
+export default PackageTable;

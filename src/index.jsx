@@ -182,6 +182,30 @@ const ProtectedRoute = ({ children }) => {
   return children;
 };
 
+const AdminRoute = ({ children }) => {
+  const user = localStorage.getItem("user")
+  const dispatch = useDispatch()
+  const {currentUser} = useSelector(o => o.user)
+
+  if (!user) {
+    return <Navigate to="/authentication/login" replace />;
+  }  else {
+    const userData = decodeUserToken(user)
+
+    if (Date.now() / 1000 > userData.exp) {
+      localStorage.removeItem("user")
+      
+      return <Navigate to="/authentication/login" replace />;
+    } else if (userData.user_role != "admin") {
+      return <Navigate to="/authentication/login" replace />;
+    } else if (Object.keys(currentUser).length === 0) {
+      dispatch(setCurrentUser(userData))
+    }
+  }
+
+  return children;
+};
+
 root.render(
   <React.StrictMode>
     <Provider store={store}>
@@ -204,16 +228,20 @@ root.render(
 
               <Route path={`${process.env.PUBLIC_URL}/`} element={<ProtectedRoute><App /></ProtectedRoute>}>
                 <Route path={`${process.env.PUBLIC_URL}/dashboard`} element={<Dashboard />} />
-                <Route path={`${process.env.PUBLIC_URL}/user-management`} element={<UserManagement />} />
                 <Route path={`${process.env.PUBLIC_URL}/api-monitoring`} element={<ApiMonitoring />} />
                 <Route path={`${process.env.PUBLIC_URL}/short-link-monitoring-stats`} element={<ShortLinkMonitoring />} />
-                <Route path={`${process.env.PUBLIC_URL}/package-management`} element={<PackageManage />} />
                 <Route path={`${process.env.PUBLIC_URL}/bot-redirection`} element={<BotRedirection />} />
                 <Route path={`${process.env.PUBLIC_URL}/allowed-country`} element={<AllowedCountry />} />
                 <Route path={`${process.env.PUBLIC_URL}/whitelist`} element={<Whitelist />} />
                 <Route path={`${process.env.PUBLIC_URL}/blacklist`} element={<Blacklist />} />
                 <Route path={`${process.env.PUBLIC_URL}/disposal-email`} element={<DisposalEmail />} />
                 <Route path={`${process.env.PUBLIC_URL}/phonenumber`} element={<PhoneNumber />} />
+              </Route>
+
+              {/* admin pages*/}
+              <Route path={`${process.env.PUBLIC_URL}/admin`} element={<AdminRoute><App /></AdminRoute>}>
+                <Route path={`${process.env.PUBLIC_URL}/admin/user-management`} element={<UserManagement />} />
+                <Route path={`${process.env.PUBLIC_URL}/admin/package-management`} element={<PackageManage />} />
               </Route>
                 {/* Apps */}
                 {/* <Route>
@@ -411,7 +439,6 @@ root.render(
       </Fragment>
     </Provider>
   </React.StrictMode>
-
 );
 
 // If you want to start measuring performance in your app, pass a function

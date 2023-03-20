@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./style.module.scss";
-import { Link } from "react-router-dom";
+import { Link, useFetcher } from "react-router-dom";
 import PageHeader from "../../Layouts/PageHeader/PageHeader";
 import {
   Col,
@@ -12,44 +12,84 @@ import {
   Tabs,
   ListGroupItem,
   ListGroup,
-  Table
+  Table,
 } from "react-bootstrap";
+import {
+  getShortlinks,
+  addShortlink,
+  deleteShortlink,
+  clearErrorMsg,
+} from "../../Slices/shortlinkSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const ShortLinkMonitoring = () => {
+  const dispatch = useDispatch();
+  const { linkList, duplicateErr, urlErr } = useSelector((o) => o.shortlink);
+
+  const [url, setUrl] = useState("");
+  const [keyname, setKeyname] = useState("");
+
+  useEffect(() => {
+    dispatch(getShortlinks());
+  }, []);
+
+  const generateShort = () => {
+    dispatch(clearErrorMsg());
+    dispatch(addShortlink({ url, keyname }));
+  };
+
+  const deleteUrl = (id) => {
+    dispatch(deleteShortlink({ id }));
+  };
+
   return (
     <div className={styles.ShortLinkMonitoring}>
-      <PageHeader
-        titles="Short Link Monitoring Stats"
-        active="Short Link Monitoring Stats"
-        items={["Home"]}
-      />
+      <PageHeader titles="Short Link" active="Short Link" items={["Home"]} />
 
       <Card>
         <Card.Body>
-            <Row>
-                <Col md="6" sm="12">
-                    <div className="text-muted">
-                        URL to Short / Visitor Redirection
-                    </div>                    
-                    <input className="form-control" placeholder="https://example.com/path"></input>
-                </Col>
-                
-                <Col md="3" sm="12">
-                    <div className="text-muted">
-                        Custom Keyname (Optional)
-                    </div>                    
-                    <input className="form-control" placeholder="xRfTyH"></input>
-                </Col>
-                
-                <Col md="3" sm="12">
+          <Row>
+            <Col md="6" sm="12">
+              <div className="text-muted">
+                URL to Short / Visitor Redirection
+              </div>
+              <input
+                className="form-control"
+                placeholder="https://example.com/path"
+                onChange={(e) => setUrl(e.target.value)}
+              ></input>
+              <span style={{ color: "#BC243C" }}>{urlErr}</span>
+            </Col>
+
+            <Col md="3" sm="12">
+              <div className="text-muted">Custom Keyname (Optional)</div>
+              <input
+                className="form-control"
+                placeholder="xRfTyH"
+                onChange={(e) => setKeyname(e.target.value)}
+              ></input>
+              <span style={{ color: "#BC243C" }}>{duplicateErr}</span>
+            </Col>
+
+            {/* <Col md="3" sm="12">
                     <div className="text-muted">
                         Custom Keyname (Optional)
                     </div>                    
                     <input className="form-control" placeholder="KILLBOT 404 NOT FOUND"></input>
-                </Col>
-            </Row>
+                </Col> */}
 
-            <Row className="mt-5">
+            <Col>
+              <Button
+                variant="secondary"
+                style={{ marginTop: "20px" }}
+                onClick={generateShort}
+              >
+                <i className="fa fa-check me-3"></i> Generate
+              </Button>
+            </Col>
+          </Row>
+
+          {/* <Row className="mt-5">
                 <Col>
                     <div className="text-muted">Device Allowed</div>
                     <input className="form-control" defaultValue="ALL DEVICE"></input>
@@ -73,14 +113,14 @@ const ShortLinkMonitoring = () => {
                 <Col>
                     <Button variant="secondary" style={{marginTop: '20px'}}><i className="fa fa-check me-3"></i> Generate</Button>
                 </Col>
-            </Row>
+            </Row> */}
 
-            <div className="mt-5">
+          {/* <div className="mt-5">
                 <Button variant="primary" className="me-3"><i className="fa fa-link me-3"></i>TUTORIAL</Button>
                 <Button variant="warning"><i className="fa fa-download me-3"></i>DOWNLOAD SHORTLINK</Button>
-            </div>            
+            </div>             */}
 
-            <div className="border p-5 mt-5">
+          {/* <div className="border p-5 mt-5">
                 <Row className={styles.smallFont}>
                     <Col md="7">
                         <div className="text-muted">SHORTLINK STATISTICS</div>
@@ -115,38 +155,43 @@ const ShortLinkMonitoring = () => {
                         <div className={`${styles.visitorFont} text-muted`}>0</div>
                     </Col>
                 </Row>
-            </div>
+            </div> */}
 
-            <div className="mt-5">
-              <Table className="border text-nowrap text-md-nowrap table-hover mb-0">
-                <thead>
-                  <tr>
-                    <th className="py-5">DATE</th>
-                    <th className="py-5">KEYNAME</th>
-                    <th className="py-5">VISITOR REDIRECTION</th>
-                    <th className="py-5">REAL VISITOR</th>
-                    <th className="py-5">BOT</th>
-                    <th className="py-5">TOTAL VISITOR</th>
-                    <th className="py-5">STATUS</th>
-                    <th className="py-5">ACTION</th>
+          <div className="mt-5">
+            <Table className="border text-nowrap text-md-nowrap table-hover mb-0">
+              <thead>
+                <tr>
+                  <th className="py-5">URL</th>
+                  <th className="py-5">SHORT URL</th>
+                  <th className="py-5">DATE</th>
+                  <th className="py-5">ACTION</th>
+                </tr>
+              </thead>
+              <tbody>
+                {linkList.map((e) => (
+                  <tr key={e._id}>
+                    <td>
+                      <p style={{ wordBreak: "break-all" }}>{e.url}</p>
+                    </td>
+                    <td>{process.env.REACT_APP_API_URL + e.shortLink}</td>
+                    <td>{new Date(e.createdAt).toDateString()}</td>
+                    <td>
+                      <Button
+                        variant="primary"
+                        onClick={() => deleteUrl(e._id)}
+                      >
+                        Delete
+                      </Button>
+                    </td>
                   </tr>
-                </thead>
-                <tbody>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                </tbody>
-              </Table>
-            </div>
+                ))}
+              </tbody>
+            </Table>
+          </div>
         </Card.Body>
       </Card>
     </div>
   );
 };
 
-export default ShortLinkMonitoring
+export default ShortLinkMonitoring;
