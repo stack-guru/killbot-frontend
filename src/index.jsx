@@ -242,7 +242,7 @@ root.render(
               </Route>
 
               {/* admin pages*/}
-              <Route path={`${process.env.PUBLIC_URL}/admin`} element={<AdminRoute><App /></AdminRoute>}>
+              <Route path={`${process.env.PUBLIC_URL}/admin/dashboard`} element={<AdminRoute><App /></AdminRoute>}>
                 <Route path={`${process.env.PUBLIC_URL}/admin/user-management`} element={<UserManagement />} />
                 <Route path={`${process.env.PUBLIC_URL}/admin/package-management`} element={<PackageManage />} />
               </Route>
