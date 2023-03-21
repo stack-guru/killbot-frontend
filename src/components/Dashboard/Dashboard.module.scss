@@ -1,5 +1,21 @@
 .Dashboard {}
 
 .visitorIcon {
-    font-size: 52px;
+    font-size: 24px;
+}
+
+.userInfoContainer {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 20px;
+}
+
+.userInfo {
+    font-size: 14px;
+}
+
+.userCount {
+    color: #05c3fb;
+    margin-left: 8px;
 }

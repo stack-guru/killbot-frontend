@@ -54,6 +54,7 @@
     "react-dropzone": "^14.2.3",
     "react-dual-listbox": "^4.0.0",
     "react-filepond": "^7.1.2",
+    "react-ga4": "^2.1.0",
     "react-google-recaptcha": "^2.1.0",
     "react-hook-form-wizard": "^0.1.7-alpha",
     "react-image-lightbox": "^5.1.4",

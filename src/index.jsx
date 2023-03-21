@@ -9,6 +9,7 @@ import { Provider } from "react-redux";
 import store from "./Redux/store";
 import { setCurrentUser } from './Slices/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import ReactGa from 'react-ga4';
 
 const Auth = lazy(() => import('./components/Authentication/firebaseAuth/auth'));
 const App = lazy(() => import('./components/app'));
@@ -206,6 +207,8 @@ const AdminRoute = ({ children }) => {
   return children;
 };
 
+ReactGa.initialize("G-C4868SDH43")
+
 root.render(
   <React.StrictMode>
     <Provider store={store}>
@@ -297,7 +300,7 @@ root.render(
                 </Route> */}
 
                 {/* Charts */}
-                {/* <Route>
+                <Route>
 
                   <Route path={`${process.env.PUBLIC_URL}/charts/chartjs`} element={<Chartjs />} />,
 
@@ -321,7 +324,7 @@ root.render(
                   <Route path={`${process.env.PUBLIC_URL}/charts/apexchart/radar`} element={<Radar />} />,
                   <Route path={`${process.env.PUBLIC_URL}/charts/apexchart/polararea`} element={<Polararea />} />,
 
-                </Route> */}
+                </Route>
 
                 {/* E-commerce */}
                 {/* <Route>
